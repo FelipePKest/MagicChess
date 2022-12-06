@@ -2,18 +2,24 @@
 #include "Board.h"
 #include "MoveManager.h"
 #include "Piece.h"
+#include "Mover.h"
 
 int main() {
     Board* board = Board::GetBoardInstance();
     board->mockUpgradePawnBoard();
     board->printBoard();
     
-    MoveManager * moveManager = MoveManager::GetMoveManagerInstance();
+    Mover * mover = Mover::GetMoverInstance();
+    int moves[64];
+    mover->deslocation(8, 16, moves);
 
-    board->movePiece(6,7);
-    board->movePiece(57,56);
-    board->printBoard();
+    int direction = moves[0];
+    for (int i = 0; i<64; i++) {
+        if (moves[i] < 1) {
+            break;
+        }
+        std::cout << moves[i] << std::endl;
+    }
 
-    // std::cout << "Is Check: " << isCheck << std::endl;
     return 0;
 }
