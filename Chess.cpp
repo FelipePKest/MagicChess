@@ -10,16 +10,22 @@ int main() {
     board->printBoard();
     
     Mover * mover = Mover::GetMoverInstance();
-    int moves[64];
-    mover->deslocation(8, 16, moves);
+    int moves[8];
+    mover->deslocationByCoordinates(9, 8, moves);
 
-    int direction = moves[0];
-    for (int i = 0; i<64; i++) {
-        if (moves[i] < 1) {
+    int direction;
+    int xCoordinate;
+    int yCoordinate;
+    for (int i = 0; i<8; i++) {
+        if (xCoordinate > 280) {
             break;
         }
-        std::cout << moves[i] << std::endl;
+        if (i%2 == 0) {
+            xCoordinate = moves[i];
+        } else {
+            yCoordinate = moves[i];
+            std::cout << "Move coordinates: " << xCoordinate << " " << yCoordinate << std::endl;
+        }
     }
-
     return 0;
 }

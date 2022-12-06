@@ -5,6 +5,8 @@ class Mover {
 public:
     void deslocation(int from, int to, int * moves);
 
+    void deslocationByCoordinates(int from, int to, int * moves);
+
     static Mover* GetMoverInstance() {
 
         if (moverInstance == nullptr) {
