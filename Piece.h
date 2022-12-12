@@ -1,5 +1,4 @@
 #pragma once
-#include<string>
 
 enum Color { 
 	BLACK = 0,
@@ -33,9 +32,4 @@ class Piece {
 
 		Piece(PieceType type, Color color);
 
-		std::string getName() {
-			PieceType pt = getType();
-			Color c = getColor();
-			return std::string("Piece of type ") + PieceTypeNames[pt] + std::string(" and color ") + ColorNames[c];
-		}
 };

@@ -1,4 +1,5 @@
 #include "Tile.h"
+#include <stdlib.h>
 
 Tile::Tile(int x, int y) {
     this->x = x;
@@ -27,4 +28,3 @@ Piece* Tile::getOccupiedBy() {
 void Tile::setOccupiedBy(Piece* piece) {
 	this->occupiedBy = piece;
 }
-

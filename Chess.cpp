@@ -7,11 +7,10 @@
 int main() {
     Board* board = Board::GetBoardInstance();
     board->mockRookBoard();
-    board->printBoard();
     
     Mover * mover = Mover::GetMoverInstance();
     int moves[10];
-    mover->deslocationByCoordinates(57, 63);
+    mover->deslocationByCoordinates(9, 11);
 
     int direction;
     int xCoordinate;

@@ -15,7 +15,6 @@ public:
 	void movePiece(int from, int to);
 	
 	Board() {
-		std::cout << "Board constructor called" << std::endl;
 		setTiles();
 	};
 
@@ -26,12 +25,6 @@ public:
 		}
 		return boardInstance;
 	};
-
-	void printBoard() {
-		for (int i = 0; i < 64; i++) {
-			tiles[i]->printTile();
-		}
-	}
 
 	void mockRookBoard();
 
