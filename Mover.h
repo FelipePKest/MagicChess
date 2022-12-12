@@ -7,6 +7,8 @@ public:
 
     void deslocationByCoordinates(int from, int to, int * moves);
 
+    void deslocationByCoordinates(int from, int to);
+
     static Mover* GetMoverInstance() {
 
         if (moverInstance == nullptr) {
@@ -18,7 +20,7 @@ public:
 
 private:
     Board * board;
-    const int TILE_SIZE = 40;
+    const int TILE_SIZE = 10;
 
     static Mover * moverInstance;
     Mover() {

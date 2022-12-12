@@ -6,17 +6,17 @@
 
 int main() {
     Board* board = Board::GetBoardInstance();
-    board->mockUpgradePawnBoard();
+    board->mockRookBoard();
     board->printBoard();
     
     Mover * mover = Mover::GetMoverInstance();
-    int moves[8];
-    mover->deslocationByCoordinates(9, 8, moves);
+    int moves[10];
+    mover->deslocationByCoordinates(57, 63);
 
     int direction;
     int xCoordinate;
     int yCoordinate;
-    for (int i = 0; i<8; i++) {
+    for (int i = 0; i<10; i++) {
         if (xCoordinate > 280) {
             break;
         }

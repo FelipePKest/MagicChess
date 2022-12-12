@@ -67,8 +67,8 @@ void Board::mockRookBoard() {
         tiles[i] = new Tile(i/8, i%8);
     }
 
-    tiles[54] = new Tile(0, 7, new Piece(PieceType::PAWN, Color::WHITE));
-    tiles[63] = new Tile(7,6, new Piece(PieceType::KING, Color::BLACK));
+    tiles[56] = new Tile(7,0, new Piece(PieceType::PAWN, Color::WHITE));
+    tiles[63] = new Tile(7,7, new Piece(PieceType::KING, Color::BLACK));
 }
 
 void Board::mockUpgradePawnBoard() {
