@@ -4,6 +4,7 @@
 #include "CountdownTimer.h"
 #include "MoveManager.h"
 #include "LedControl.h"
+#include "FastLED.h"
 
 // void MovePeça(int piece_pos, int desitination){
 //  if(Board->IsOccupied(destination){
@@ -44,6 +45,8 @@ ChessDisplay *lcd = nullptr;
 GFButton *selectBtn = nullptr;
 CountdownTimer *TimerLeft = nullptr;
 CountdownTimer *TimerRight = nullptr;
+
+CRGB leds[84];
 LEDControl *ledControl = nullptr;
 
 long lastTimerUpdateSeconds;
@@ -67,7 +70,10 @@ void init_control(){
   lcd = new ChessDisplay(8, 9, 10, 11, 12, 13); // LiquidCrystal(rs,en,d4,d5,d6,d7);
   lcd->begin(20, 4);
   selectBtn = new GFButton(6);
-  ledControl = new LEDControl(84);
+
+  // Leds
+  LEDS.addLeds<WS2812B, 4, GRB>(leds, 84);
+  ledControl = new LEDControl(leds);
 }
 
 /************************************/
@@ -138,6 +144,11 @@ void setup() {
 
   // Vars initialization.
   init_control();
+
+  // button lib is bugged; this is needed
+  if(selectBtn->wasPressed()){
+    Serial.println("this was pressed");
+  }
 }
 
 void loop() {
@@ -183,7 +194,7 @@ void loop() {
     case GAME_STARTING:
 
       // Init vars.      
-      TimerLeft = new CountdownTimer(10);
+      TimerLeft = new CountdownTimer(60 * 3);
       TimerRight = new CountdownTimer(60 * 3);
       
       lastTimerUpdateSeconds = millis();
@@ -210,7 +221,11 @@ void loop() {
     case WAITING_PIECE_SELECTION:
       lcd->show_select_piece_message();
 
+      
       if(selectBtn->wasPressed()){
+
+        Serial.println("SELET PIEE");
+        
         selected_piece_position = row_pos * 8 + col_pos;
         Serial.println("Selected piece at row " + String(row_pos) + " column " + String(col_pos) + " - ie. index " + String(selected_piece_position));
         

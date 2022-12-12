@@ -14,7 +14,7 @@ class LEDControl{
 
   public:
     
-    LEDControl(int numLeds);
+    LEDControl(CRGB *ledss);
 
     // Basic functions.
 

@@ -4,10 +4,9 @@
 
 #define DATA_PIN 2;
 
-LEDControl::LEDControl(int numLeds){
-  NumLeds = numLeds;
-  leds = new CRGB[numLeds];
-  FastLED.addLeds<WS2812B, DATA_PIN, 1, EOrder::RGB>(leds, NumLeds) //@Greg, nao consegui fazer essa linha funcionar.
+LEDControl::LEDControl(CRGB *ledss){
+  leds = ledss;
+  NumLeds = 84;
   lastHouseLedLitIndex = 0;
 }
 
@@ -27,12 +26,12 @@ int LEDControl::ConvertRowAndPosToTabIndex(int row, int col){
 int LEDControl::ConvertRowAndColToLedPos(int row, int col){
   int p;
   if (row % 2 > 0) {
-    p = 12 + row * 6 - (col);
+    p = 7 + row * 11 - (col);
 
   } else {
     p = col + row * 11;
   }
-  return p;
+  return p + 1;
 }
 
 /// <summary>
